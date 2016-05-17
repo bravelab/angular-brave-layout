@@ -1,10 +1,10 @@
 {
-  "name": "angular-brave-toastr",
+  "name": "angular-brave-layout",
   "authors": [
     "Mariusz Smenżyk <mariusz.smenzyk@sizeof.pl>"
   ],
-  "description": "Global toastr for all ajax-requests",
-  "main": "./dist/angular-brave-toastr.js",
+  "description": "Global layout for all ajax-requests",
+  "main": "./dist/angular-brave-layout.js",
   "keywords": [
     "Docs",
     "SmartAdmin"
@@ -13,7 +13,7 @@
   "homepage": "https://www.sizeof.pl/en/",
   "private": true,
   "dependencies": {
-    "angular-toastr": "latest"
+    "jquery": "latest"
   },
   "ignore": [
     "**/.*",

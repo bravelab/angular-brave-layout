@@ -1,8 +1,8 @@
 {
-  "name": "angular-brave-toastr",
-  "description": "Global toastr for all ajax-requests",
-  "main": "dist/angular-brave-toastr.min.js",
-  "version": "1.0.2",
+  "name": "angular-brave-layout",
+  "description": "Global layout tools",
+  "main": "dist/angular-brave-layout.min.js",
+  "version": "0.0.1",
   "private": false,
   "license": "MIT",
   "author": {
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/sizeof/angular-brave-toastr.git"
+    "url": "https://bitbucket.org/sizeof/angular-brave-layout.git"
   },
   "devDependencies": {
     "angular": "^1.4.3",

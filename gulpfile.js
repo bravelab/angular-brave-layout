@@ -8,14 +8,17 @@
 
   var config = {
     lint: {
-      src: ['src/**/*.js', 'test/**/*.spec.js']
+      src: [
+        'src/**/*.js',
+        'test/**/*.spec.js'
+      ]
     },
     dist: {
       files: [
         'src/**/*.js'
       ],
-      concat: 'angular-brave-toastr.js',
-      min: 'angular-brave-toastr.min.js'
+      concat: 'angular-brave-layout.js',
+      min: 'angular-brave-layout.min.js'
     }
   };
 
