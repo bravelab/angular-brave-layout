@@ -4,7 +4,6 @@
 
   angular.module('ngBraveLayout').directive('stateBreadcrumbs', function ($rootScope, $state) {
 
-
     return {
       restrict: 'EA',
       replace: true,
@@ -14,17 +13,17 @@
         function setBreadcrumbs(breadcrumbs) {
           var html = '<li>Home</li>';
           angular.forEach(breadcrumbs, function (crumb) {
-            html += '<li>' + crumb + '</li>'
+            html += '<li>' + crumb + '</li>';
           });
-          element.html(html)
+          element.html(html);
         }
 
         function fetchBreadcrumbs(stateName, breadcrunbs) {
 
           var state = $state.get(stateName);
 
-          if (state && state.data && state.data.title && breadcrunbs.indexOf(state.data.title) == -1) {
-            breadcrunbs.unshift(state.data.title)
+          if (state && state.data && state.data.title && breadcrunbs.indexOf(state.data.title) === -1) {
+            breadcrunbs.unshift(state.data.title);
           }
 
           var parentName = stateName.replace(/.?\w+$/, '');
@@ -49,9 +48,9 @@
 
         $rootScope.$on('$stateChangeStart', function (event, state) {
           processState(state);
-        })
+        });
       }
-    }
+    };
   });
 
 }());

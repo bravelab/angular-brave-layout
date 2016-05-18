@@ -21,9 +21,8 @@
         tElement.toggleClass('desktop-detected', !isMobile);
         tElement.toggleClass('mobile-detected', isMobile);
 
-
       }
-    }
+    };
   });
 
 }());

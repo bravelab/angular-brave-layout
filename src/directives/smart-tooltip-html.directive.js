@@ -1,7 +1,9 @@
 (function () {
   'use strict';
 
-  angular.module('ngBraveLayout').directive('smartTooltipHtml', function () {
+  angular
+    .module('ngBraveLayout')
+    .directive('smartTooltipHtml', function () {
       return {
         restrict: 'A',
         link: function (scope, element, attributes) {
@@ -9,10 +11,9 @@
             placement: attributes.tooltipPlacement || 'top',
             html: true,
             title: attributes.smartTooltipHtml
-          })
+          });
         }
       };
-    }
-  );
+    });
 
 }());

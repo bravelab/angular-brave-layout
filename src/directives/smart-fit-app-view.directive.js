@@ -1,6 +1,6 @@
-/*(function () {
+/*
+(function () {
  'use strict';
-
 
  angular.module('ngBraveLayout').directive('smartFitAppView', function ($rootScope, SmartCss) {
  return {
@@ -32,4 +32,4 @@
  }
  });
  }());
- */
+*/

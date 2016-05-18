@@ -14,19 +14,20 @@
 (function () {
   'use strict';
 
+  angular
+    .module('ngBraveLayout')
+    .directive('smartFastClick', function () {
+      return {
+        restrict: 'A',
+        compile: function (tElement, tAttributes) {
+          tElement.removeAttr('smart-fast-click data-smart-fast-click');
 
-  angular.module('ngBraveLayout').directive('smartFastClick', function () {
-    return {
-      restrict: 'A',
-      compile: function (tElement, tAttributes) {
-        tElement.removeAttr('smart-fast-click data-smart-fast-click');
-
-        FastClick.attach(tElement);
-
-        if (!FastClick.notNeeded())
-          tElement.addClass('needsclick')
-      }
-    }
-  });
+          FastClick.attach(tElement);
+          if (!FastClick.notNeeded()) {
+            tElement.addClass('needsclick');
+          }
+        }
+      };
+    });
 
 }());

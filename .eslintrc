@@ -7,8 +7,13 @@ globals:
   window: true
   beforeEach: true
   inject: true
+  document: true
+  navigator: true
+  location: true
+  localStorage: true
   alert: true
   jQuery: true
+  FastClick: true
   _: true
   $: true
 

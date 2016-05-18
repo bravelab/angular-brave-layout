@@ -1,7 +1,8 @@
 (function () {
   'use strict';
 
-  angular.module('ngBraveLayout')
+  angular
+    .module('ngBraveLayout')
     .directive('smartInclude', function () {
       return {
         replace: true,
@@ -13,7 +14,6 @@
           element[0].className = element[0].className.replace(/placeholder[^\s]+/g, '');
         }
       };
-    }
-  );
+    });
 
 }());

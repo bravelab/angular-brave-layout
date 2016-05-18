@@ -46,10 +46,10 @@
       customButton: false,
       customClass: 'folder-10 | next-10',
       customStart: function () {
-        alert('Hello you, this is a custom button...');
+        console.log('Hello you, this is a custom button...');
       },
       customEnd: function () {
-        alert('bye, till next time...');
+        console.log('bye, till next time...');
       },
       // order
       buttonOrder: '%refresh% %custom% %edit% %toggle% %fullscreen% %delete%',
@@ -78,18 +78,33 @@
       },
       ajaxnav: true
 
-    }
+    };
 
     var dispatchedWidgetIds = [];
     var setupWaiting = false;
-
     var debug = 1;
+
+
+    var initDropdowns = function (widgetIds) {
+      angular.forEach(widgetIds, function (wid) {
+        $('#' + wid + ' [data-toggle="dropdown"]').each(function () {
+          var $parent = $(this).parent();
+          // $(this).removeAttr('data-toggle');
+          if (!$parent.attr('dropdown')) {
+            $(this).removeAttr('href');
+            $parent.attr('dropdown', '');
+            var compiled = $compile($parent)($parent.scope());
+            $parent.replaceWith(compiled);
+          }
+        });
+      });
+    };
 
     var setupWidgets = function (element, widgetIds) {
 
       if (!setupWaiting) {
 
-        if (_.intersection(widgetIds, dispatchedWidgetIds).length != widgetIds.length) {
+        if (_.intersection(widgetIds, dispatchedWidgetIds).length !== widgetIds.length) {
 
           dispatchedWidgetIds = _.union(widgetIds, dispatchedWidgetIds);
 
@@ -105,7 +120,7 @@
           setupWaiting = true;
           $timeout(function () {
             setupWaiting = false;
-            setupWidgets(element, widgetIds)
+            setupWidgets(element, widgetIds);
           }, 200);
         }
       }
@@ -115,21 +130,6 @@
     var destroyWidgets = function (element, widgetIds) {
       element.data('jarvisWidgets') && element.data('jarvisWidgets').destroy();
       dispatchedWidgetIds = _.xor(dispatchedWidgetIds, widgetIds);
-    };
-
-    var initDropdowns = function (widgetIds) {
-      angular.forEach(widgetIds, function (wid) {
-        $('#' + wid + ' [data-toggle="dropdown"]').each(function () {
-          var $parent = $(this).parent();
-          // $(this).removeAttr('data-toggle');
-          if (!$parent.attr('dropdown')) {
-            $(this).removeAttr('href');
-            $parent.attr('dropdown', '');
-            var compiled = $compile($parent)($parent.scope())
-            $parent.replaceWith(compiled);
-          }
-        })
-      });
     };
 
     var jarvisWidgetAddedOff,
@@ -146,7 +146,7 @@
 
         $viewContentLoadedOff = $rootScope.$on('$viewContentLoaded', function (event, data) {
           $timeout(function () {
-            setupWidgets(element, widgetIds)
+            setupWidgets(element, widgetIds);
           }, 100);
         });
 
@@ -156,21 +156,21 @@
             jarvisWidgetAddedOff();
             $viewContentLoadedOff();
             $stateChangeStartOff();
-            destroyWidgets(element, widgetIds)
+            destroyWidgets(element, widgetIds);
           });
 
         jarvisWidgetAddedOff = $rootScope.$on('jarvisWidgetAdded', function (event, widget) {
-          if (widgetIds.indexOf(widget.attr('id')) == -1) {
+          if (widgetIds.indexOf(widget.attr('id')) === -1) {
             widgetIds.push(widget.attr('id'));
             $timeout(function () {
-              setupWidgets(element, widgetIds)
+              setupWidgets(element, widgetIds);
             }, 100);
           }
 //                    console.log('jarvisWidgetAdded', widget.attr('id'));
         });
 
       }
-    }
+    };
   });
 
 }());
