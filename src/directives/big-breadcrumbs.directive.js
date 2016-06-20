@@ -14,7 +14,6 @@
         },
         link: function (scope, element) {
           var first = _.first(scope.items);
-
           var icon = scope.icon || 'home';
           element.find('h1').append('<i class="fa-fw fa fa-' + icon + '"></i>' + first);
           _.rest(scope.items).forEach(function (item) {
