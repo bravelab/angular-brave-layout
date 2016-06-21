@@ -8,6 +8,7 @@
    */
   angular
     .module('ngBraveLayout', [])
-    .value('version', '0.0.1');
+    .value('version', '0.0.3');
+  
 
 })();
