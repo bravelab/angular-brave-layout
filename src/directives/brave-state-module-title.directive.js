@@ -3,27 +3,28 @@
 
   angular
     .module('ngBraveLayout')
-    .directive('braveStateBreadcrumbs', function ($rootScope, $state, $compile) {
+    .directive('braveStateModuleTitle', function ($rootScope, $state, $compile) {
 
-      var home = '<a ui-sref="app.home">Home</a>';
+      var home = '';
 
       return {
         restrict: 'EA',
         replace: true,
-        template: '<ol class="breadcrumb">' + home + '</ol>',
+        template: '<div><h1 class="page-title txt-color-blueDark"></h1></div>',
         link: function (scope, element) {
 
           function setBreadcrumbs(breadcrumbs) {
-            var html = '<li>' + home + '</li>';
+            var html = '';
 
             angular.forEach(breadcrumbs, function (val, key) {
-              html += '<li><a ui-sref="' + val[0] + '">' + val[1] + '</a></li>';
+              html += '<a ui-sref="' + val[0] + '" style="margin-right: 5px;">' + val[1] + '</a>';
             });
 
             var template = angular.element(html);
             var linkFn = $compile(template);
             var item = linkFn(scope);
-            element.html(item);
+
+            element.find('h1').html(item);
 
           }
 
