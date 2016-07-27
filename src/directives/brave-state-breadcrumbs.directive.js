@@ -5,7 +5,7 @@
     .module('ngBraveLayout')
     .directive('braveStateBreadcrumbs', function ($rootScope, $state, $compile) {
 
-      var home = '<a ui-sref="app.home">Home</a>';
+      var home = '<a translate ui-sref="app.home">Home</a>';
 
       return {
         restrict: 'EA',
@@ -17,7 +17,7 @@
             var html = '<li>' + home + '</li>';
 
             angular.forEach(breadcrumbs, function (val, key) {
-              html += '<li><a ui-sref="' + val[0] + '">' + val[1] + '</a></li>';
+              html += '<li><a translate ui-sref="' + val[0] + '">' + val[1] + '</a></li>';
             });
 
             var template = angular.element(html);

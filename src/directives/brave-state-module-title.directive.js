@@ -3,7 +3,7 @@
 
   angular
     .module('ngBraveLayout')
-    .directive('braveStateModuleTitle', function ($rootScope, $state, $compile) {
+    .directive('braveStateModuleTitle', function ($rootScope, $state, $compile, $translate) {
 
       var home = '';
 
@@ -17,7 +17,7 @@
             var html = '';
 
             angular.forEach(breadcrumbs, function (val, key) {
-              html += '<a ui-sref="' + val[0] + '" style="margin-right: 5px;">' + val[1] + '</a>';
+              html += '<a ui-sref="' + val[0] + '" style="margin-right: 5px;" translate>' + val[1] + '</a>';
             });
 
             var template = angular.element(html);

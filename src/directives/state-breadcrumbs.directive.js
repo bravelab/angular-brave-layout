@@ -7,13 +7,13 @@
     return {
       restrict: 'EA',
       replace: true,
-      template: '<ol class="breadcrumb"><li>Home</li></ol>',
+      template: '<ol class="breadcrumb"><li translate>Home</li></ol>',
       link: function (scope, element) {
 
         function setBreadcrumbs(breadcrumbs) {
-          var html = '<li>Home</li>';
+          var html = '<li translate>Home</li>';
           angular.forEach(breadcrumbs, function (crumb) {
-            html += '<li>' + crumb + '</li>';
+            html += '<li translate>' + crumb + '</li>';
           });
           element.html(html);
         }
