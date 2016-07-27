@@ -8,7 +8,7 @@
    */
   angular
     .module('ngBraveLayout', [])
-    .value('version', '0.0.5');
+    .value('version', '0.0.6');
 
 
 })();
@@ -209,7 +209,7 @@
           var icon = scope.icon || 'home';
           element.find('h1').append('<i class="fa-fw fa fa-' + icon + '"></i>' + first);
           _.rest(scope.items).forEach(function (item) {
-            element.find('h1').append('<span>>' + item + '</span>');
+            element.find('h1').append('<span translate>' + item + '</span>');
           });
         }
       };
@@ -224,7 +224,7 @@
     .module('ngBraveLayout')
     .directive('braveStateBreadcrumbs', function ($rootScope, $state, $compile) {
 
-      var home = '<a ui-sref="app.home">Home</a>';
+      var home = '<a translate ui-sref="app.home">Home</a>';
 
       return {
         restrict: 'EA',
@@ -236,7 +236,7 @@
             var html = '<li>' + home + '</li>';
 
             angular.forEach(breadcrumbs, function (val, key) {
-              html += '<li><a ui-sref="' + val[0] + '">' + val[1] + '</a></li>';
+              html += '<li><a translate ui-sref="' + val[0] + '">' + val[1] + '</a></li>';
             });
 
             var template = angular.element(html);
@@ -286,7 +286,7 @@
 
   angular
     .module('ngBraveLayout')
-    .directive('braveStateModuleTitle', function ($rootScope, $state, $compile) {
+    .directive('braveStateModuleTitle', function ($rootScope, $state, $compile, $translate) {
 
       var home = '';
 
@@ -300,7 +300,7 @@
             var html = '';
 
             angular.forEach(breadcrumbs, function (val, key) {
-              html += '<a ui-sref="' + val[0] + '" style="margin-right: 5px;">' + val[1] + '</a>';
+              html += '<a ui-sref="' + val[0] + '" style="margin-right: 5px;" translate>' + val[1] + '</a>';
             });
 
             var template = angular.element(html);
@@ -351,7 +351,7 @@
 
   angular
     .module('ngBraveLayout')
-    .directive('braveStateTitle', function ($rootScope, $state, $timeout) {
+    .directive('braveStateTitle', function ($rootScope, $state, $timeout, $translate) {
       return {
         restrict: 'A',
         compile: function (element, attributes) {
@@ -1164,13 +1164,13 @@
     return {
       restrict: 'EA',
       replace: true,
-      template: '<ol class="breadcrumb"><li>Home</li></ol>',
+      template: '<ol class="breadcrumb"><li translate>Home</li></ol>',
       link: function (scope, element) {
 
         function setBreadcrumbs(breadcrumbs) {
-          var html = '<li>Home</li>';
+          var html = '<li translate>Home</li>';
           angular.forEach(breadcrumbs, function (crumb) {
-            html += '<li>' + crumb + '</li>';
+            html += '<li translate>' + crumb + '</li>';
           });
           element.html(html);
         }

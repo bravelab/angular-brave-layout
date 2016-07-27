@@ -3,7 +3,7 @@
 
   angular
     .module('ngBraveLayout')
-    .directive('braveStateTitle', function ($rootScope, $state, $timeout) {
+    .directive('braveStateTitle', function ($rootScope, $state, $timeout, $translate) {
       return {
         restrict: 'A',
         compile: function (element, attributes) {
